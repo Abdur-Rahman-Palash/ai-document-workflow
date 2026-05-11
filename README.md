@@ -1,6 +1,18 @@
 # AI Document Workflow — MCP Platform
 
+[![MCPize](https://mcpize.com/badge/@abdurrahmanpalashbd/ai-document-workflow)](https://mcpize.com/mcp/ai-document-workflow)
+
 A scalable AI-native document workflow platform with a Node.js TypeScript MCP gateway and a Python FastAPI document engine.
+
+## Connect via MCPize
+
+Use this MCP server instantly with no local installation:
+
+```bash
+npx -y mcpize connect @abdurrahmanpalashbd/ai-document-workflow --client claude
+```
+
+Or connect at: **https://mcpize.com/mcp/ai-document-workflow**
 
 ## Overview
 
