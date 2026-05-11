@@ -1,0 +1,14 @@
+version: 1
+runtime: typescript
+entry: src/index.ts
+
+build:
+  install: npm install
+  run: pwsh -NoProfile -ExecutionPolicy Bypass -File build.ps1
+
+startCommand:
+  type: http
+  command: npm run build && PORT=8000 npm start
+
+configSchema:
+  source: code

@@ -1,0 +1,63 @@
+version: "3.9"
+services:
+  mcp-server:
+    build:
+      context: ./mcp-server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - NODE_ENV=production
+      - DOCUMENT_ENGINE_URL=http://python-document-engine:8000
+      - AI_PROCESSOR_URL=http://python-document-engine:8000
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/docworkflow
+      - REDIS_URL=redis://redis:6379
+      - API_KEY=change-me
+    depends_on:
+      - python-document-engine
+      - postgres
+      - redis
+    networks:
+      - ai-doc-net
+
+  python-document-engine:
+    build:
+      context: ./python-document-engine
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - LOG_LEVEL=INFO
+    depends_on:
+      - redis
+    networks:
+      - ai-doc-net
+
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: docworkflow
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - ai-doc-net
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - ai-doc-net
+
+volumes:
+  postgres-data:
+
+networks:
+  ai-doc-net:
+    driver: bridge

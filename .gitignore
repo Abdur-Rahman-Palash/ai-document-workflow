@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ruff
+.ruff_cache/
+
+# IDE
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+
+# MCPize
+.mcpize/
+
+# Environment
+.env
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+**/dist/
+**/.cache/
+
+# Python service
+python-document-engine/__pycache__/
+python-document-engine/*.pyc
+python-document-engine/.hatch/
