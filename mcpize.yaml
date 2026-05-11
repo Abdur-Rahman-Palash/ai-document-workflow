@@ -1,13 +1,16 @@
+# MCPize Configuration
+# Docs: https://mcpize.com/docs/mcpize-yaml
+
 version: 1
+
+name: "ai-document-workflow"
+slug: "ai-document-workflow"
+
 runtime: typescript
-entry: src/index.ts
 
 build:
-  install: npm install
+  install: "npm install"
 
-startCommand:
+start:
   type: http
-  command: npm run build && PORT=8000 npm start
-
-configSchema:
-  source: code
+  command: "npm run build && PORT=8000 npm start"
